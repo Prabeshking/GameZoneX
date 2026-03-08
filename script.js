@@ -71,17 +71,6 @@ loadGames();
 function filterCategory(cat) {
     loadGames(cat);
 }
-<script>
-    const fsBtn = document.getElementById("fullscreenBtn");
-    const frame = document.getElementById("gameFrame");
-
-    fsBtn.addEventListener("click", () => {
-        if (frame.requestFullscreen) frame.requestFullscreen();
-        else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
-        else if (frame.msRequestFullscreen) frame.msRequestFullscreen();
-    });
-</script>
-
 
 
 /* ===== SEARCH BAR ===== */
