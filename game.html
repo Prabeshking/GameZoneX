@@ -21,12 +21,6 @@
     ">⬅ Back</button>
 </header>
 
-<div id="gameContainer">
-    <h2 id="gameTitle" style="text-align:center; margin-top:20px;"></h2>
-    <iframe id="gameFrame"></iframe>
-</div>
-
-<script>
 <h2 id="gameTitle" style="text-align:center; margin-top:20px;"></h2>
 
 <div style="text-align:center; margin-top:15px;">
@@ -46,9 +40,11 @@
 <iframe id="gameFrame"></iframe>
 
 <script>
+    // Get game ID from URL
     const params = new URLSearchParams(window.location.search);
     const gameId = params.get("id");
 
+    // Find game in games.js
     const game = games.find(g => g.id === gameId);
 
     if (!game) {
@@ -58,6 +54,7 @@
         document.getElementById("gameFrame").src = game.url;
     }
 
+    // Fullscreen button
     const fsBtn = document.getElementById("fullscreenBtn");
     const frame = document.getElementById("gameFrame");
 
@@ -66,22 +63,6 @@
         else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
         else if (frame.msRequestFullscreen) frame.msRequestFullscreen();
     });
-</script>
-
-    // Get game ID from URL
-    const params = new URLSearchParams(window.location.search);
-    const gameId = params.get("id");
-
-    // Find game in games.js
-    const game = games.find(g => g.id === gameId);
-
-    if (!game) {
-        document.getElementById("gameContainer").innerHTML =
-            "<h2 style='text-align:center; margin-top:40px;'>Game not found.</h2>";
-    } else {
-        document.getElementById("gameTitle").textContent = game.title;
-        document.getElementById("gameFrame").src = game.url;
-    }
 </script>
 
 </body>
