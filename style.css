@@ -1,0 +1,372 @@
+/* ===== GLOBAL ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #050509;
+    font-family: Arial, sans-serif;
+    color: #f5f5f5;
+}
+
+/* Layout: sidebar + main */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 230px;
+    height: 100vh;
+    background: #0a0a10;
+    padding: 20px;
+    border-right: 1px solid #1b1b25;
+    overflow-y: auto;
+}
+
+.main {
+    margin-left: 230px;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1a1028 0, #050509 55%);
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar h2 {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    color: #c58cff;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    background: #14141f;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 14px;
+    color: #ddd;
+}
+
+.sidebar li:hover {
+    background: #b400ff;
+    color: #fff;
+    box-shadow: 0 0 12px #b400ff55;
+}
+
+/* ===== HEADER ===== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    border-bottom: 1px solid #1b1b25;
+    background: rgba(5, 5, 12, 0.9);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+/* Neon GameZoneX Logo */
+.logo {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #b400ff, #ff66ff);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px #b400ff66;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* Header right: search + dark toggle */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right input {
+    background: #14141f;
+    color: #f5f5f5;
+    border: 1px solid #26263a;
+    border-radius: 8px;
+    padding: 9px 12px;
+    width: 260px;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+.header-right input::placeholder {
+    color: #888;
+}
+
+.header-right input:focus {
+    border-color: #b400ff;
+    box-shadow: 0 0 12px #b400ff55;
+    outline: none;
+}
+
+/* Dark mode button */
+#darkToggle {
+    background: #14141f;
+    border: 1px solid #26263a;
+    color: #f5f5f5;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 16px;
+}
+
+#darkToggle:hover {
+    background: #b400ff;
+    color: #fff;
+    box-shadow: 0 0 12px #b400ff55;
+}
+
+/* ===== FEATURED SLIDER ===== */
+.slider {
+    width: 100%;
+    overflow: hidden;
+    padding: 18px 24px 10px 24px;
+}
+
+.slide-track {
+    display: flex;
+    gap: 18px;
+    animation: scroll 22s linear infinite;
+}
+
+.slide {
+    min-width: 280px;
+    height: 150px;
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 0 18px #000;
+    border: 2px solid #b400ff55;
+    background: #14141f;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9);
+}
+
+.slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 25px #000000aa;
+}
+
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ===== GAME GRID ===== */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 22px;
+    padding: 10px 24px 30px 24px;
+}
+
+/* Game cards */
+.game-card {
+    background: #14141f;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.22s ease;
+    box-shadow: 0 0 12px #000;
+    border: 2px solid #1f1f2f;
+    position: relative;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px #b400ff66;
+    border-color: #b400ffaa;
+}
+
+.game-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    background: radial-gradient(circle at top, #2a163f, #050509);
+}
+
+.game-card h3 {
+    margin: 10px 12px 12px 12px;
+    font-size: 16px;
+    color: #f5f5f5;
+}
+
+/* ===== LOADING SCREEN ===== */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #050509;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 6px solid #1b1b25;
+    border-top: 6px solid #b400ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#loader p {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #c58cff;
+}
+
+/* ===== GAME PLAYER PAGE (game.html iframe) ===== */
+iframe {
+    width: 90%;
+    height: 600px;
+    border: none;
+    margin: 25px auto;
+    display: block;
+    box-shadow: 0 0 22px #000;
+    border-radius: 12px;
+    background: #000;
+}
+
+/* ===== DARK MODE (LIGHT THEME) ===== */
+body.light {
+    background: #f3f3f7;
+    color: #111;
+}
+
+body.light .main {
+    background: #f3f3f7;
+}
+
+body.light .sidebar {
+    background: #ffffff;
+    border-right: 1px solid #ddd;
+}
+
+body.light .sidebar li {
+    background: #f0f0f5;
+    color: #222;
+}
+
+body.light .sidebar li:hover {
+    background: #b400ff;
+    color: #fff;
+}
+
+body.light header {
+    background: #ffffffdd;
+    border-bottom: 1px solid #ddd;
+}
+
+body.light .header-right input {
+    background: #f0f0f5;
+    color: #111;
+    border-color: #ccc;
+}
+
+body.light .header-right input::placeholder {
+    color: #777;
+}
+
+body.light #darkToggle {
+    background: #f0f0f5;
+    color: #111;
+    border-color: #ccc;
+}
+
+body.light .slider {
+    background: transparent;
+}
+
+body.light .slide {
+    background: #fff;
+    border-color: #b400ff55;
+}
+
+body.light .game-card {
+    background: #ffffff;
+    border-color: #ddd;
+}
+
+body.light .game-card h3 {
+    color: #111;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+    .main {
+        margin-left: 0;
+    }
+    header {
+        padding: 14px 16px;
+    }
+    .header-right input {
+        width: 180px;
+    }
+    .slider {
+        padding: 14px 16px 8px 16px;
+    }
+    .game-grid {
+        padding: 8px 16px 20px 16px;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+.game-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+
+  /* Neon frame */
+  border: 3px solid #a020f0;
+  border-radius: 12px;
+
+  /* Neon glow */
+  box-shadow:
+    0 0 10px #a020f0,
+    0 0 20px #a020f0,
+    0 0 30px #a020f0;
+  
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect (optional but looks amazing) */
+.game-card img:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 15px #a020f0,
+    0 0 30px #a020f0,
+    0 0 45px #a020f0;
+}
+
+}

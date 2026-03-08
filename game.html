@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Play Game – GameZoneX</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="games.js"></script>
+</head>
+<body>
+
+<header>
+    <h1 class="logo">GameZoneX</h1>
+    <button onclick="history.back()" id="backBtn" style="
+        background:#14141f;
+        border:1px solid #26263a;
+        color:#fff;
+        padding:8px 14px;
+        border-radius:8px;
+        cursor:pointer;
+        font-size:16px;
+    ">⬅ Back</button>
+</header>
+
+<div id="gameContainer">
+    <h2 id="gameTitle" style="text-align:center; margin-top:20px;"></h2>
+    <iframe id="gameFrame"></iframe>
+</div>
+
+<script>
+<h2 id="gameTitle" style="text-align:center; margin-top:20px;"></h2>
+
+<div style="text-align:center; margin-top:15px;">
+    <button id="fullscreenBtn" style="
+        background:#b400ff;
+        border:none;
+        padding:10px 18px;
+        color:#fff;
+        font-size:16px;
+        border-radius:8px;
+        cursor:pointer;
+        box-shadow:0 0 12px #b400ff88;
+        transition:0.2s;
+    ">⛶ Fullscreen</button>
+</div>
+
+<iframe id="gameFrame"></iframe>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get("id");
+
+    const game = games.find(g => g.id === gameId);
+
+    if (!game) {
+        document.getElementById("gameTitle").textContent = "Game not found.";
+    } else {
+        document.getElementById("gameTitle").textContent = game.title;
+        document.getElementById("gameFrame").src = game.url;
+    }
+
+    const fsBtn = document.getElementById("fullscreenBtn");
+    const frame = document.getElementById("gameFrame");
+
+    fsBtn.addEventListener("click", () => {
+        if (frame.requestFullscreen) frame.requestFullscreen();
+        else if (frame.webkitRequestFullscreen) frame.webkitRequestFullscreen();
+        else if (frame.msRequestFullscreen) frame.msRequestFullscreen();
+    });
+</script>
+
+    // Get game ID from URL
+    const params = new URLSearchParams(window.location.search);
+    const gameId = params.get("id");
+
+    // Find game in games.js
+    const game = games.find(g => g.id === gameId);
+
+    if (!game) {
+        document.getElementById("gameContainer").innerHTML =
+            "<h2 style='text-align:center; margin-top:40px;'>Game not found.</h2>";
+    } else {
+        document.getElementById("gameTitle").textContent = game.title;
+        document.getElementById("gameFrame").src = game.url;
+    }
+</script>
+
+</body>
+</html>
