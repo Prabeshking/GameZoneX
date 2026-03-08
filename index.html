@@ -1,17 +1,65 @@
-<ul>
-    <li onclick="filterCategory('All')">All Games</li>
-    <li onclick="filterCategory('Racing')">Racing</li>
-    <li onclick="filterCategory('Endless Runner')">Endless Runner</li>
-    <li onclick="filterCategory('Platformer')">Platformer</li>
-    <li onclick="filterCategory('Puzzle')">Puzzle</li>
-    <li onclick="filterCategory('Arcade')">Arcade</li>
-    <li onclick="filterCategory('Ragdoll')">Ragdoll</li>
-    <li onclick="filterCategory('Shooter')">Shooter</li>
-    <li onclick="filterCategory('Battle Royale')">Battle Royale</li>
-    <li onclick="filterCategory('IO')">IO</li>
-    <li onclick="filterCategory('Sports')">Sports</li>
-    <li onclick="filterCategory('Retro')">Retro</li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GameZoneX</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="games.js"></script>
+</head>
+<body>
+
+<!-- ===== LOADING SCREEN ===== -->
+<div id="loader">
+    <div class="spinner"></div>
+    <p>Loading GameZoneX...</p>
+</div>
+
+<!-- ===== SIDEBAR ===== -->
+<div class="sidebar">
+    <h2>Categories</h2>
+    <ul>
+        <li onclick="filterCategory('All')">All Games</li>
+        <li onclick="filterCategory('Racing')">Racing</li>
+        <li onclick="filterCategory('Endless Runner')">Endless Runner</li>
+        <li onclick="filterCategory('Platformer')">Platformer</li>
+        <li onclick="filterCategory('Puzzle')">Puzzle</li>
+        <li onclick="filterCategory('Arcade')">Arcade</li>
+        <li onclick="filterCategory('Ragdoll')">Ragdoll</li>
+        <li onclick="filterCategory('Shooter')">Shooter</li>
+        <li onclick="filterCategory('Battle Royale')">Battle Royale</li>
+        <li onclick="filterCategory('IO')">IO</li>
+        <li onclick="filterCategory('Sports')">Sports</li>
+        <li onclick="filterCategory('Retro')">Retro</li>
+    </ul>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="main">
+
+    <!-- ===== HEADER ===== -->
+    <header>
+        <h1 class="logo">GameZoneX</h1>
+
+        <div class="header-right">
+            <input type="text" id="search" placeholder="Search games...">
+            <button id="darkToggle">🌙</button>
+        </div>
+    </header>
+
+    <!-- ===== FEATURED SLIDER ===== -->
+    <div class="slider">
+        <div class="slide-track" id="featuredTrack"></div>
+    </div>
+
+    <!-- ===== GAME GRID ===== -->
+    <div class="game-grid" id="gameGrid"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
 
 
 
