@@ -455,7 +455,45 @@ const games = [
         url: "https://cloud.freezenova.com/games/escape-prison/",
         thumbnail: "thumbnails/escape-prison.png"
     }
+    {
+            id: "parkour-climb",
+        title: "Parkour Climb",
+        category: "Action",
+        url: "https://cloud.freezenova.com/games/parkour-climb/",
+        thumbnail: "thumbnails/parkour-climb.png"
+    },
+    {
+        id: "parkour-escape",
+        title: "Parkour Escape",
+        category: "Action",
+        url: "https://cloud.freezenova.com/games/parkour-escape/",
+        thumbnail: "thumbnails/parkour-escape.png"
+    },
+    {
+        id: "rooftop-run",
+        title: "Rooftop Run",
+        category: "Adventure",
+        url: "https://cloud.freezenova.com/games/rooftop-run/",
+        thumbnail: "thumbnails/rooftop-run.png"
+    },
+    {
+        id: "stickman-parkour",
+        title: "Stickman Parkour",
+        category: "Action",
+        url: "https://cloud.freezenova.com/games/stickman-parkour/",
+        thumbnail: "thumbnails/stickman-parkour.png"
+    },
+    {
+        id: "escape-prison",
+        title: "Escape Prison",
+        category: "Adventure",
+        url: "https://cloud.freezenova.com/games/escape-prison/",
+        thumbnail: "thumbnails/escape-prison.png"
+    }
+
+];
 
 ];
 
       
+
