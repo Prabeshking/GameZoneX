@@ -1,65 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>GameZoneX</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="games.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GameZoneX — PlayStation‑Blue • Crazy Loadout • Instant Play</title>
+  <meta name="description" content="GameZoneX: fast, neon, intense browser games plus instant‑play favorites. Play right now via Classroom 6x mirrors." />
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <!-- Header -->
+  <header class="site-header">
+    <a class="logo" href="#">GameZoneX</a>
+    <nav class="nav">
+      <a href="#loadout">Crazy Loadout</a>
+      <a href="#browser">Instant Play</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
 
-<!-- ===== LOADING SCREEN ===== -->
-<div id="loader">
-    <div class="spinner"></div>
-    <p>Loading GameZoneX...</p>
-</div>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Play smarter. Spend less.</h1>
+      <p>Fast, neon, intense games + zero‑download instant play — in a PlayStation‑blue vibe.</p>
 
-<!-- ===== SIDEBAR ===== -->
-<div class="sidebar">
-    <h2>Categories</h2>
-    <ul>
-        <li onclick="filterCategory('All')">All Games</li>
-        <li onclick="filterCategory('Racing')">Racing</li>
-        <li onclick="filterCategory('Endless Runner')">Endless Runner</li>
-        <li onclick="filterCategory('Platformer')">Platformer</li>
-        <li onclick="filterCategory('Puzzle')">Puzzle</li>
-        <li onclick="filterCategory('Arcade')">Arcade</li>
-        <li onclick="filterCategory('Ragdoll')">Ragdoll</li>
-        <li onclick="filterCategory('Shooter')">Shooter</li>
-        <li onclick="filterCategory('Battle Royale')">Battle Royale</li>
-        <li onclick="filterCategory('IO')">IO</li>
-        <li onclick="filterCategory('Sports')">Sports</li>
-        <li onclick="filterCategory('Retro')">Retro</li>
-    </ul>
-</div>
-
-<!-- ===== MAIN CONTENT ===== -->
-<div class="main">
-
-    <!-- ===== HEADER ===== -->
-    <header>
-        <h1 class="logo">GameZoneX</h1>
-
-        <div class="header-right">
-            <input type="text" id="search" placeholder="Search games...">
-            <button id="darkToggle">🌙</button>
-        </div>
-    </header>
-
-    <!-- ===== FEATURED SLIDER ===== -->
-    <div class="slider">
-        <div class="slide-track" id="featuredTrack"></div>
+      <!-- Mirror Switcher (for Classroom 6x hubs) -->
+      <div class="mirror">
+        <label for="mirrorSelect">Mirror:</label>
+        <select id="mirrorSelect" aria-label="Select Classroom 6x mirror">
+          <option value="https://classroom-6x.io/home/">classroom-6x.io (hub)</option>
+          <option value="https://sites.google.com/view/classroom6xofficial/">Google Sites (official hub)</option>
+          <option value="https://classroom6x.us.com/">classroom6x.us.com (alt hub)</option>
+        </select>
+        <small class="note">Use a different mirror if one is blocked on your network.</small>
+      </div>
     </div>
+  </section>
 
-    <!-- ===== GAME GRID ===== -->
-    <div class="game-grid" id="gameGrid"></div>
+  <!-- CRAZY LOADOUT -->
+  <section id="loadout" class="section">
+    <div class="section-head">
+      <h2>🔥 Crazy Loadout</h2>
+      <p class="muted">Fast • Neon • Intense</p>
+    </div>
+    <div class="game-grid" id="loadout-grid" aria-live="polite"></div>
+  </section>
 
-</div>
+  <!-- INSTANT PLAY -->
+  <section id="browser" class="section">
+    <div class="section-head">
+      <h2>🌐 Instant Play (Browser Games)</h2>
+      <p class="muted">Click &amp; play right now — no downloads.</p>
+    </div>
+    <div class="game-grid" id="browser-grid" aria-live="polite"></div>
+  </section>
 
-<script src="script.js"></script>
+  <!-- About / Disclaimer -->
+  <section id="about" class="section about">
+    <h3>About GameZoneX</h3>
+    <p>
+      GameZoneX curates legit, instant‑play browser games. Many titles are reachable via
+      Classroom 6x hubs and mirrors designed for restricted networks and Chromebooks. If a link
+      is blocked, switch the mirror above and try again. [1](https://classroom-6x.io/home/)[6](https://pushtolearn.com/classroom-6x-unblocked-games)
+    </p>
+  </section>
 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <small>© <span id="year"></span> GameZoneX. All game titles are property of their respective owners.</small>
+  </footer>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
-
-
-
