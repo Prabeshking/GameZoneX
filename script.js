@@ -1,41 +1,29 @@
-/* GameZoneX — No-chooser build for root files (style.css, script.js) */
+/* GameZoneX — Local games, same-tab navigation */
 
-const DEFAULT_HUB = "https://classroom-6x.io/home/"; // change this one line if needed
-
-// ----- Crazy Loadout (Fast • Neon • Intense) -----
+// LOCAL PAGES (you can add more later)
 const crazyLoadout = [
   {
-    title: "1v1.LOL",
-    cover: "assets/1v1lol.jpg",
-    url: "https://classrooms6x.gitlab.io/game/1v1-lol.html", // direct page
-    tags: ["Shooter",".io","Multiplayer"]
-  },
-  { title: "Drift Hunters", cover: "assets/drifthunters.jpg", url: DEFAULT_HUB, tags: ["Racing","3D","Drift"] },
-  { title: "Slope",          cover: "assets/slope.jpg",         url: DEFAULT_HUB, tags: ["Reflex","Runner","Neon"] },
-  { title: "Drive Mad",      cover: "assets/drivemad.jpg",      url: DEFAULT_HUB, tags: ["Physics","Challenge"] },
-  { title: "Super Tunnel Rush", cover: "assets/supertunnelrush.jpg", url: DEFAULT_HUB, tags: ["Reflex","Speed","Neon"] },
+    title: "Neon Runner",
+    cover: "assets/neonrunner.jpg", // optional thumbnail; if missing, a gradient shows
+    url: "games/neon-runner/index.html",
+    tags: ["Runner","Reflex","Neon"]
+  }
+  // Add more local games here as you create them:
+  // { title:"...", cover:"assets/...", url:"games/<slug>/index.html", tags:[...] }
+];
+
+const browserGames = [
+  // You can list the same local games or different ones
   {
-    title: "Snow Rider 3D",
-    cover: "assets/snowrider3d.jpg",
-    url: "https://classroom6xonline.github.io/game/snow-rider-3d", // direct page
-    tags: ["Arcade","3D"]
+    title: "Neon Runner",
+    cover: "assets/neonrunner.jpg",
+    url: "games/neon-runner/index.html",
+    tags: ["Runner","Reflex"]
   }
 ];
 
-// ----- Instant Play (Browser Games) -----
-const browserGames = [
-  { title: "Crossy Road (Browser)",       cover: "assets/crossyroad.jpg",     url: DEFAULT_HUB, tags: ["Arcade","Casual"] },
-  { title: "Paper.io 2",                  cover: "assets/paperio2.jpg",       url: DEFAULT_HUB, tags: ["Competitive",".io"] },
-  { title: "Bloxd.io",                    cover: "assets/bloxdio.jpg",        url: DEFAULT_HUB, tags: ["Sandbox",".io","Multiplayer"] },
-  { title: "Geometry Dash (Lite/Meltdown)", cover: "assets/geometrydash.jpg", url: DEFAULT_HUB, tags: ["Rhythm","Hardcore"] },
-  { title: "Rooftop Snipers",             cover: "assets/rooftopsnipers.jpg", url: DEFAULT_HUB, tags: ["2‑Player","Physics"] }
-];
-
-// ----- Helpers -----
 function imgTag(src, alt) {
-  // Show gradient block if image is missing (so it still looks nice)
-  if (!src) return `<div class="thumb" aria-hidden="true"></div>`;
-  return `<img class="thumb" src="${src}" alt="${alt}">`;
+  return src ? `${src}` : `<div class="thumb" aria-hidden="true"></div>`;
 }
 function tagsRow(tags) {
   if (!tags || !tags.length) return "";
@@ -48,7 +36,7 @@ function card({ title, cover, url, tags }) {
       <div class="content">
         <h3>${title}</h3>
         ${tagsRow(tags)}
-        <a class="btn" href="${url}" target="_blank" rel="noopener">Play Now</a>
+        ${url}Play Now</a>
       </div>
     </article>
   `;
@@ -62,10 +50,8 @@ function renderAll() {
   render(crazyLoadout, "loadout-grid");
   render(browserGames, "browser-grid");
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   const y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
   renderAll();
 });
-``
