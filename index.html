@@ -4,41 +4,30 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GameZoneX — PlayStation‑Blue • Crazy Loadout • Instant Play</title>
-  <meta name="description" content="GameZoneX: fast, neon, intense browser games plus instant‑play favorites. Play right now via Classroom 6x hubs." />
-  <!-- Favicon (optional) -->
-  assets/favicon.png
-  <!-- Fonts (optional performance tweak) -->
-  https://fonts.gstatic.com
-  <!-- Styles -->
-  css/styles.css
+  <meta name="description" content="GameZoneX: fast, neon, intense browser games plus instant‑play favorites." />
+
+  <!-- Optional favicon if you add /assets/favicon.png -->
+  <!-- <link rel="icon" href="assets/favicon.png"> -->
+
+  <!-- ✅ Correct stylesheet include (root file) -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Header -->
   <header class="site-header">
-    /GameZoneX</a>
+    <a class="logo" href="#top">GameZoneX</a>
     <nav class="nav">
-      #loadoutCrazy Loadout</a>
-      #browserInstant Play</a>
-      #aboutAbout</a>
+      <a href="#loadout">Crazy Loadout</a>
+      <a href="#browser">Instant Play</a>
+      <a href="#about">About</a>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="top">
     <div class="hero-inner">
       <h1>Play smarter. Spend less.</h1>
       <p>Fast, neon, intense games + zero‑download instant play — in a PlayStation‑blue vibe.</p>
-
-      <!-- Mirror Switcher (for Classroom 6x hubs) -->
-      <div class="mirror">
-        <label for="mirrorSelect">Mirror:</label>
-        <select id="mirrorSelect" aria-label="Select Classroom 6x mirror">
-          <option value="https://classroom-6x.io/home/">classroom-6x.io (hub)</option>
-          <option value="https://sites.google.com/view/classroom6xofficial/">Google Sites (official hub)</option>
-          <option value="https://classroom6x.us.com/">classroom6x.us.com (alt hub)</option>
-        </select>
-        <small class="note">Use a different mirror if one is blocked on your network.</small>
-      </div>
     </div>
   </section>
 
@@ -64,9 +53,8 @@
   <section id="about" class="section about">
     <h3>About GameZoneX</h3>
     <p>
-      GameZoneX curates instant‑play browser games. Many titles are reachable via
-      Classroom 6x hubs/mirrors designed for restricted networks and Chromebooks.
-      If a link is blocked, switch the mirror above and try again.
+      GameZoneX curates instant‑play browser games. If a hub link ever stops working in your
+      region, change the single hub URL in <code>script.js</code>.
     </p>
   </section>
 
@@ -75,7 +63,7 @@
     <small>© <span id="year"></span> GameZoneX. All game titles are property of their respective owners.</small>
   </footer>
 
-  <!-- Load JS (defer so it runs after HTML is parsed) -->
-  js/app.js</script>
+  <!-- ✅ Correct script include (root file) -->
+  <script src="script.js" defer></script>
 </body>
 </html>
