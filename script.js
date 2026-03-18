@@ -1,93 +1,71 @@
-/* ============================
-   GAMEZONEX FULL REDESIGN JS
-   ============================ */
+/* GameZoneX — No-chooser build for root files (style.css, script.js) */
 
-/* ===== LOADING SCREEN ===== */
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        const loader = document.getElementById("loader");
-        loader.style.opacity = "0";
-        setTimeout(() => {
-            loader.style.display = "none";
-        }, 500);
-    }, 800);
-});
+const DEFAULT_HUB = "https://classroom-6x.io/home/"; // change this one line if needed
 
+// ----- Crazy Loadout (Fast • Neon • Intense) -----
+const crazyLoadout = [
+  {
+    title: "1v1.LOL",
+    cover: "assets/1v1lol.jpg",
+    url: "https://classrooms6x.gitlab.io/game/1v1-lol.html", // direct page
+    tags: ["Shooter",".io","Multiplayer"]
+  },
+  { title: "Drift Hunters", cover: "assets/drifthunters.jpg", url: DEFAULT_HUB, tags: ["Racing","3D","Drift"] },
+  { title: "Slope",          cover: "assets/slope.jpg",         url: DEFAULT_HUB, tags: ["Reflex","Runner","Neon"] },
+  { title: "Drive Mad",      cover: "assets/drivemad.jpg",      url: DEFAULT_HUB, tags: ["Physics","Challenge"] },
+  { title: "Super Tunnel Rush", cover: "assets/supertunnelrush.jpg", url: DEFAULT_HUB, tags: ["Reflex","Speed","Neon"] },
+  {
+    title: "Snow Rider 3D",
+    cover: "assets/snowrider3d.jpg",
+    url: "https://classroom6xonline.github.io/game/snow-rider-3d", // direct page
+    tags: ["Arcade","3D"]
+  }
+];
 
-/* ===== DARK MODE TOGGLE ===== */
-const darkToggle = document.getElementById("darkToggle");
+// ----- Instant Play (Browser Games) -----
+const browserGames = [
+  { title: "Crossy Road (Browser)",       cover: "assets/crossyroad.jpg",     url: DEFAULT_HUB, tags: ["Arcade","Casual"] },
+  { title: "Paper.io 2",                  cover: "assets/paperio2.jpg",       url: DEFAULT_HUB, tags: ["Competitive",".io"] },
+  { title: "Bloxd.io",                    cover: "assets/bloxdio.jpg",        url: DEFAULT_HUB, tags: ["Sandbox",".io","Multiplayer"] },
+  { title: "Geometry Dash (Lite/Meltdown)", cover: "assets/geometrydash.jpg", url: DEFAULT_HUB, tags: ["Rhythm","Hardcore"] },
+  { title: "Rooftop Snipers",             cover: "assets/rooftopsnipers.jpg", url: DEFAULT_HUB, tags: ["2‑Player","Physics"] }
+];
 
-darkToggle.addEventListener("click", () => {
-    document.body.classList.toggle("light");
-
-    // Change icon
-    if (document.body.classList.contains("light")) {
-        darkToggle.textContent = "☀️";
-    } else {
-        darkToggle.textContent = "🌙";
-    }
-});
-
-
-/* ===== FEATURED SLIDER ===== */
-const featuredTrack = document.getElementById("featuredTrack");
-
-// First 10 games become featured
-const featuredGames = games.slice(0, 10);
-
-featuredGames.forEach(g => {
-    const slide = document.createElement("div");
-    slide.className = "slide";
-    slide.onclick = () => location.href = `game.html?id=${g.id}`;
-    slide.innerHTML = `<img src="${g.thumbnail}" alt="${g.title}">`;
-    featuredTrack.appendChild(slide);
-});
-
-
-/* ===== GAME GRID LOADING ===== */
-const gameGrid = document.getElementById("gameGrid");
-
-function loadGames(filter = "All") {
-    gameGrid.innerHTML = "";
-
-    games
-        .filter(g => filter === "All" || g.category === filter)
-        .forEach(game => {
-            const card = document.createElement("div");
-            card.className = "game-card";
-            card.onclick = () => location.href = `game.html?id=${game.id}`;
-            card.innerHTML = `
-                <img src="${game.thumbnail}" alt="${game.title}">
-                <h3>${game.title}</h3>
-            `;
-            gameGrid.appendChild(card);
-        });
+// ----- Helpers -----
+function imgTag(src, alt) {
+  // Show gradient block if image is missing (so it still looks nice)
+  if (!src) return `<div class="thumb" aria-hidden="true"></div>`;
+  return `<img class="thumb" src="${src}" alt="${alt}">`;
+}
+function tagsRow(tags) {
+  if (!tags || !tags.length) return "";
+  return `<div class="tags">${tags.map(t => `<span class="tag">${t}</span>`).join("")}</div>`;
+}
+function card({ title, cover, url, tags }) {
+  return `
+    <article class="card">
+      ${imgTag(cover, title)}
+      <div class="content">
+        <h3>${title}</h3>
+        ${tagsRow(tags)}
+        <a class="btn" href="${url}" target="_blank" rel="noopener">Play Now</a>
+      </div>
+    </article>
+  `;
+}
+function render(list, elId) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  el.innerHTML = list.map(card).join("");
+}
+function renderAll() {
+  render(crazyLoadout, "loadout-grid");
+  render(browserGames, "browser-grid");
 }
 
-loadGames();
-
-
-/* ===== CATEGORY FILTER (SIDEBAR) ===== */
-function filterCategory(cat) {
-    loadGames(cat);
-}
-
-
-/* ===== SEARCH BAR ===== */
-document.getElementById("search").addEventListener("input", function () {
-    const text = this.value.toLowerCase();
-    gameGrid.innerHTML = "";
-
-    games
-        .filter(g => g.title.toLowerCase().includes(text))
-        .forEach(game => {
-            const card = document.createElement("div");
-            card.className = "game-card";
-            card.onclick = () => location.href = `game.html?id=${game.id}`;
-            card.innerHTML = `
-                <img src="${game.thumbnail}" alt="${game.title}">
-                <h3>${game.title}</h3>
-            `;
-            gameGrid.appendChild(card);
-        });
+document.addEventListener("DOMContentLoaded", () => {
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+  renderAll();
 });
+``
