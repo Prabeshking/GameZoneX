@@ -1,16 +1,12 @@
-/* ===========================
-   GameZoneX — PlayStation Blue Theme
-   =========================== */
 :root{
   --bg:#0a0f1f;
   --bg-2:#0b1026;
   --card:#0d1b2a;
   --text:#e6ecff;
   --muted:#a6b3d9;
-  --brand:#0a84ff;      /* PS electric blue */
-  --brand-2:#1b4fff;    /* deeper blue glow */
+  --brand:#0a84ff;
+  --brand-2:#1b4fff;
   --focus:#93c5fd;
-  --success:#22c55e;
 }
 
 *{box-sizing:border-box}
@@ -90,7 +86,6 @@ h3{margin:0; font-size:18px}
   font-size:12px; padding:3px 8px; border-radius:999px;
   background:#1a2445; color:#bcd1ff; border:1px solid rgba(255,255,255,.08);
 }
-
 .btn{
   justify-self:start; display:inline-flex; align-items:center; gap:8px;
   padding:10px 12px; border-radius:10px; border:0; cursor:pointer;
